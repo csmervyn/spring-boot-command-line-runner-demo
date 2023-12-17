@@ -23,3 +23,11 @@ dependencies {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.named("build") { finalizedBy("buildMultiplePlatsformImage") }
+task<Exec>("buildMultiplePlatsformImage") {
+    commandLine ("./scripts/build-multiple-platsform-image.sh")
+}
+task<Exec>("buildMultiplePlatsformImageInForCICD") {
+    commandLine ("./scripts/build-multiple-platsform-image-cicd.sh")
+}
